@@ -1,6 +1,6 @@
 <?php $this->extend("plantilla");?>
 <?php $this->section("titulo");?>
-Nuevo Usuario
+NuevoVentos
 <?php $this->endSection();?>
 <?php $this->section("content");?>
 
@@ -8,9 +8,9 @@ Nuevo Usuario
 <section class="row">
     <div class="col-12 card">
         <div class="card-header">
-            <a href="<?= base_url();?>/usuarios/create" class="btn btn-success btm-sm">
+            <a href="<?= base_url();?>/eventos/create" class="btn btn-success btm-sm">
                 <i class="bi bi-plus"></i>
-                Nuevo Usuairo
+                Nuevo evento
             </a>
         </div>
         <div class="card-body">
@@ -19,23 +19,31 @@ Nuevo Usuario
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
+                        <th>nombre</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Categoria</th>
+                        <th>Paquete</th>
+                        <th>Fecha</th>
                         <th>Acciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <?php //Inicio forEach 
-                foreach($usuario as $u):
+                foreach($evento as $e):
                 ?>
                     <tr class="align-middle">
-                        <td><?= $u["Id"]; ?> </td>
-                        <td><?= $u["nombre"]; ?> </td>
-                        <td> <?= $u["correo"]; ?></td>
-                        <td> <?= $u["telefono"]; ?></td>
+                        <td><?= $e["id"]; ?> </td>
+                        <td><?= $e["nombre"]; ?> </td>
+                        <td> <?= $e["nombre_cliente"]; ?></td>
+                        <td> <?= $e["estado"]; ?></td>
+                        <td> <?= $e["nombre_categoria"]; ?></td>
+                        <td> <?= $e["paquete_id"]; ?></td>
+                        <td> <?= $e["fecha_evento"]; ?></td>
+
                         <td>
-                            <a href="<?= base_url("/usuarios/".$u["Id"]."/edit");?>" class="btn btn-primary btn-sm">
+                            <a href="<?= base_url("/eventos/edit/".$e["id"]);?>" class="btn btn-primary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                     <path
@@ -43,7 +51,7 @@ Nuevo Usuario
                                 </svg>
                             </a>
 
-                            <a href="<?= base_url("/usuarios/".$u["Id"]);?>" class="btn btn-dark btn-sm">
+                            <a href="<?= base_url("/eventos/".$e["id"]);?>" class="btn btn-dark btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-search" viewBox="0 0 16 16">
                                     <path
@@ -51,7 +59,7 @@ Nuevo Usuario
                                 </svg>
                             </a>
 
-                            <button onClick="eliminar(<?= $u["Id"];?>)" class="btn btn-danger btn-sm">
+                            <button onClick="eliminar(<?= $e["id"];?>)" class="btn btn-danger btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-trash3" viewBox="0 0 16 16">
                                     <path
@@ -87,7 +95,7 @@ function eliminar(id) {
         confirmButtonText: "Si eliminalo"
     }).then((result) => {
         if (result.isConfirmed) {
-            location.href = "<?= base_url();?>/usuarios/" + id + "/delete"
+            location.href = "<?= base_url();?>/eventos/" + id + "/delete"
         }
     });
 }

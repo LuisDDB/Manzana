@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class UsuarioModel extends Model{
 
-    protected $table = "usuarios";
+    protected $table = "usuarios_244206";
     protected $primatyKey = "Id";
 
     protected $allowedFields =["nombre", "correo", "password_usuario", "telefono"];

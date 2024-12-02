@@ -22,8 +22,8 @@ class UsuarioController extends BaseController{
     //informacion de un usario (VIEW)
     public function show($id){
         $usuario = $this->usuarioModel->find($id);
-        echo "<h1> informaicon del usuario $id </h1>";
-        echo "<p>$usuario[nombre] </p>";
+        $data= array("usuario"=>$usuario);
+        return view('usuarios/show', $data);
 
     }
 
@@ -79,7 +79,27 @@ class UsuarioController extends BaseController{
 
     }
 
+    public function login(){
+        return view("usuarios/login");
+    }
+    public function validarLogin(){
+        $correo = $this->request->getPOST("correo");
+        $passworrd = $this->request->getPOST("password_usuario");
 
+        $usuario = $this->usuarioModel->where("correo",$correo)-> where("password_usuario",$passworrd)->first();
+
+        if(!$usuario){
+            return redirect()->to(base_url()."/login");
+        }else{
+            session()->set($usuario);
+            return redirect()->to(base_url()."/usuarios");
+
+        }
+    }
+
+    public function logout(){
+
+    }
 
 
 }
