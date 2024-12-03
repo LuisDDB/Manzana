@@ -79,6 +79,9 @@ NuevoVentos
 
         </div>
 
+        <?php 
+        ?>
+
     </div>
 </section>
 <!-- Libreria de alertas -->

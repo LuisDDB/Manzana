@@ -42,6 +42,9 @@
                             class="nav-icon bi bi-palette"></i>
                         <p>Usuarios</p>
                     </a> </li>
+                <li class="nav-item"> <a href="<?=base_url();?>/eventos" class="nav-link"> <i class="bi bi-calendar-event"></i>
+                        <p>Eventos</p>
+                    </a> </li>
             </ul>
             <!--end::Sidebar Menu-->
         </nav>
